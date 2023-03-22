@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order index{% endblock %}
+
+{% block body %}
+    <h1>Order index</h1>
+    <a class="btn btn-primary" href="{{ path('flow_order_to_csv') }}" title="Update orders and export to csv">Update Orders</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Amount</th>
+            <th>Currency</th>
+            <th>OrderNumber</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.currency }}</td>
+                <td>{{ order.orderNumber }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
